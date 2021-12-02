@@ -1,13 +1,10 @@
 fun main() {
-    fun part1(input: List<Int>): Long {
-        return input.zipWithNext()
-                .stream()
-                .filter { pair -> pair.first < pair.second }
-                .count()
+    fun part1(input: List<Int>): Int {
+        return input.zipWithNext().count { pair -> pair.first < pair.second }
     }
 
 
-    fun part2(input: List<Int>): Long {
+    fun part2(input: List<Int>): Int {
         val result = mutableListOf<Int>()
         for (i in 0..input.size - 3) {
             result.add(sumThreeElements(input, i))
@@ -18,8 +15,8 @@ fun main() {
 
     // test if implementation meets criteria from the description, like:
     val testInput = readInput("Day01_test").map { it.toInt() }
-    check(part1(testInput) == 7L)
-    check(part2(testInput) == 5L)
+    check(part1(testInput) == 7)
+    check(part2(testInput) == 5)
 
     val input = readInput("Day01").map { it.toInt() }
     println(part1(input))

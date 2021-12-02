@@ -22,7 +22,7 @@ fun part1(input: List<Instruction>): Int {
 }
 
 private fun countTypeValues(input: List<Instruction>, type: String) =
-        input.stream().filter { it.type == type }.mapToInt { it.value }.sum()
+        input.filter { it.type == type }.sumOf { it.value }
 
 fun part2(input: List<Instruction>): Int {
     var aim = 0
